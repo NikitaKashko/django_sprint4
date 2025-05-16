@@ -15,14 +15,14 @@ class SignUp(CreateView):
 
 
 class SignIn(LoginView):
-    template_name = 'registration/login.html'  # ваш шаблон входа
-    redirect_authenticated_user = True  # редирект если уже авторизован
+    template_name = 'registration/login.html'
+    redirect_authenticated_user = True
     success_url = reverse_lazy('blog:index')
 
 
 class LoggedOut(View):
     def get(self, request):
-        # Перенаправляем на страницу подтверждения
+
         logout(request)
         messages.success(request, 'Вы успешно вышли из системы')
         return redirect('logout_confirm')
